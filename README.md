@@ -10,6 +10,7 @@
 
 ### Ссылки на сервисы командной работы
 - [YouTrack](https://restaurant.youtrack.cloud/agiles/159-2/current)
+- [Miro](https://miro.com/app/board/uXjVNq1Hal0=/?share_link_id=37750487980)
 
 ### Ссылки на подмодули
 - [Backend](https://github.com/PavelPutin/restobook_backend)
