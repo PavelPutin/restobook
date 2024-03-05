@@ -12,7 +12,7 @@
 - [YouTrack - доска с задачами](https://restaurant.youtrack.cloud/agiles/159-2/current)
 - [YouTrack - база знаний](https://restaurant.youtrack.cloud/articles/RESTAURANT-A-8/O-komande-7.1)
 - [Miro](https://miro.com/app/board/uXjVNq1Hal0=/?share_link_id=37750487980)
-- [Figma](https://www.figma.com/file/M8dwrCDWawCvFP1bY0HYcy/Design?type=design&node-id=0%3A1&mode=design&t=7YHUCLYxwS6MkovA-1)
+- [Figma](https://www.figma.com/file/AiMhpd2BVTV9FCTnZ5zXev/Mobile-design?type=design&node-id=0-1&mode=design&t=F6382bGbYZum4A60-0)
 
 ### Ссылки на подмодули
 - [Backend](https://github.com/PavelPutin/restobook_backend)
