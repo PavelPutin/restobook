@@ -1,0 +1,46 @@
+@startuml Диаграмма классов
+
+package "Controllers Level" {
+    class "Sign In Controller"
+    class "Restaurants Controller"
+    class "Accounts Controller"
+    class "Tables Controller"
+    class "Reservations Controller"
+}
+
+package "Services Level" {
+    class "Security Service"
+    class "Accounts Service"
+    class "Tables Service"
+    class "Reservations Service"
+    class "Restaurants Service"
+}
+
+package "Persistance Level" {
+    class "Accounts Repository"
+    class "Tables Repository"
+    class "Reservations Repository"
+    class "Restaurants Repository"
+}
+
+"Sign In Controller" -- "Security Service"
+"Restaurants Controller" -- "Restaurants Service"
+"Accounts Controller" -- "Accounts Service"
+"Tables Controller" -- "Tables Service"
+"Reservations Controller" -- "Reservations Service"
+
+"Security Service" -- "Accounts Repository"
+"Security Service" -- "Restaurants Repository"
+"Accounts Service" -- "Accounts Repository"
+"Tables Service" -- "Tables Repository"
+"Reservations Service" -- "Reservations Repository"
+"Reservations Service" -- "Tables Repository"
+"Restaurants Service" -- "Restaurants Repository"
+
+"Accounts Repository" -- "Database"
+"Tables Repository" -- "Database"
+"Reservations Repository" -- "Database"
+"Restaurants Repository" -- "Database"
+
+
+@enduml
