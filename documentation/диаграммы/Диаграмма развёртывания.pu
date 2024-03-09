@@ -1,0 +1,28 @@
+@startuml Диаграмма развёртывания
+
+node "Мобильный телефон сотрудника ресторана" {
+    [MobileApplication]
+}
+
+node "Веб браузер" {
+    [Сервисный сайт\nдля администратора вендора]
+}
+
+cloud Сервер {
+    [Nginx]
+    [Keycloak]
+    [Backend]
+    [Angular frontend]
+    database PostgreSQL
+}
+
+[MobileApplication] -- [Nginx]
+[Сервисный сайт\nдля администратора вендора] -- [Nginx]
+
+[Nginx] -- [Keycloak]
+[Nginx] -- [Backend]
+[Nginx] -- [Angular frontend]
+
+[Backend] -- [PostgreSQL]
+
+@enduml
