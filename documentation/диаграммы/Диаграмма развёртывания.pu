@@ -9,11 +9,13 @@ node "Веб браузер" {
 }
 
 cloud Сервер {
-    [Nginx]
-    [Keycloak]
-    [Backend]
-    [Angular frontend]
-    database PostgreSQL
+    package docker-compose {
+        [Nginx]
+        [Keycloak]
+        [Backend]
+        [Angular frontend]
+        database PostgreSQL
+    }
 }
 
 [MobileApplication] -- [Nginx]
