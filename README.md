@@ -21,5 +21,5 @@
 
 ### Ссылки на подмодули
 - [Backend](https://github.com/PavelPutin/restobook_backend)
-- [Frontend для клиента](https://github.com/PavelPutin/restobook_mobile_client)
-- [Frontend для менеджера](https://github.com/PavelPutin/restobook_mobile_manager)
+- [Frontend для сотрудников ресторанов](https://github.com/PavelPutin/restobook_mobile_client)
+- [Frontend для администратора вендора](https://github.com/PavelPutin/restobook_mobile_manager)
