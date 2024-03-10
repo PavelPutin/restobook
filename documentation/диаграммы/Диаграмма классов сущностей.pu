@@ -1,0 +1,45 @@
+@startuml Диаграмма классов сущностей
+
+class Restaurant {
+    id
+    name
+    legalEntityName
+    inn
+    comment
+}
+
+class Employee {
+    id
+    login
+    password
+    role
+    surname
+    name
+    patronymic
+    comment
+}
+
+class Table {
+    id
+    seatsNumber
+    state
+    comment
+}
+
+class Reservation {
+    id
+    personsNumber
+    clientPhoneNumber
+    clientName
+    startDateTime
+    duration
+    employeeFullName
+    creatingTime
+    comment
+}
+
+Restaurant "1" *-- "1..n" Employee
+Restaurant "1" *-- "1..n" Table
+Table "1..m" -- "0..m" Reservation
+
+@enduml
