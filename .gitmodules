@@ -1,9 +1,9 @@
 [submodule "restobook_mobile_client"]
 	path = restobook_mobile_client
 	url = https://github.com/PavelPutin/restobook_mobile_client.git
-[submodule "restobook_mobile_manager"]
-	path = restobook_mobile_manager
-	url = https://github.com/PavelPutin/restobook_mobile_manager.git
+[submodule "restobook_web"]
+	path = restobook_web
+	url = https://github.com/PavelPutin/restobook_web.git
 [submodule "restobook_backend"]
 	path = restobook_backend
 	url = https://github.com/PavelPutin/restobook_backend.git
