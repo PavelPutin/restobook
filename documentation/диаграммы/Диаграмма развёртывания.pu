@@ -13,7 +13,7 @@ cloud Сервер {
         [Nginx]
         [Keycloak]
         [Backend]
-        [Angular frontend]
+        [Flutter frontend]
         database PostgreSQL
     }
 }
@@ -23,7 +23,7 @@ cloud Сервер {
 
 [Nginx] -- [Keycloak]
 [Nginx] -- [Backend]
-[Nginx] -- [Angular frontend]
+[Nginx] -- [Flutter frontend]
 
 [Backend] -- [PostgreSQL]
 
