@@ -1,29 +1,26 @@
 @startuml Диаграмма развёртывания
 
 node "Мобильный телефон сотрудника ресторана" {
-    [MobileApplication]
+    [Flutter Mobile Application]
 }
 
-node "Веб браузер" {
-    [Сервисный сайт\nдля администратора вендора]
-}
+
 
 cloud Сервер {
     package docker-compose {
         [Nginx]
         [Keycloak]
         [Backend]
-        [Flutter frontend]
+        [Flutter Web Application]
         database PostgreSQL
     }
 }
 
-[MobileApplication] -- [Nginx]
-[Сервисный сайт\nдля администратора вендора] -- [Nginx]
+[Flutter Mobile Application] -- [Nginx] : https
 
 [Nginx] -- [Keycloak]
 [Nginx] -- [Backend]
-[Nginx] -- [Flutter frontend]
+[Nginx] -- [Flutter Web Application]
 
 [Backend] -- [PostgreSQL]
 
