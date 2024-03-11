@@ -6,7 +6,7 @@ node "Мобильный телефон сотрудника ресторана"
 
 
 
-cloud Сервер {
+cloud "Timeweb Cloud Сервер" {
     package docker-compose {
         [Nginx]
         [Keycloak]
