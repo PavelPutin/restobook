@@ -11,8 +11,6 @@ class Restaurant {
 class Employee {
     id
     login
-    password
-    role
     surname
     name
     patronymic
