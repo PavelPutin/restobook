@@ -33,6 +33,7 @@ class Reservation {
     duration
     employeeFullName
     creatingTime
+    state
     comment
 }
 
