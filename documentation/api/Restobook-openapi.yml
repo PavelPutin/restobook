@@ -87,6 +87,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Restaurant"
+        404:
+          description: Ресторан не найден
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
     put:
       description: Имзменить данные о ресторане по идентификатору
       parameters:
@@ -104,6 +110,12 @@ paths:
       responses:
         204:
           description: Данные о нужном ресторане изменены
+        404:
+          description: Ресторан не найден
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
     delete:
       description: Получить ресторан по идентификатору
       parameters:
@@ -116,6 +128,12 @@ paths:
       responses:
         204:
           description: Данные о нужном ресторане удалены
+        404:
+          description: Ресторан не найден
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
 
   /{restaurantId}/employee:
     post:
@@ -156,6 +174,12 @@ paths:
                 $ref: "#/components/schemas/Error"
         403:
           description: Клиент не является администратором вендора или администратором ресторана restaurantId
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        404:
+          description: Ресторан не найден
           content:
             application/json:
               schema:
