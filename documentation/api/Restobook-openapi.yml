@@ -1,0 +1,145 @@
+openapi: '3.0.2'
+info:
+  title: API Restobook
+  version: '1.0'
+servers:
+  - url: https://api.server.test/v1
+paths:
+  /restaurant:
+    post:
+      requestBody:
+        content: 
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Restaurant"
+        required: true
+      responses:
+        200:
+          description: OK
+    # get:
+    # put:
+    # delete:
+
+  # /restaurant/{restaurantId}:
+  #   post:
+  #   get:
+  #   put:
+  #   delete:
+
+  # /{restaurantId}/employee:
+  #   post:
+  #   get:
+  #   put:
+  #   delete:
+
+  # /{restaurantId}/employee/{employeeId}:
+  #   post:
+  #   get:
+  #   put:
+  #   delete:
+
+  # /{restaurantId}/table:
+  #   post:
+  #   get:
+  #   put:
+  #   delete:
+
+  # /{restaurantId}/table/{tableId}:
+  #   post:
+  #   get:
+  #   put:
+  #   delete:
+
+  # /{restaurantId}/reservation:
+  #   post:
+  #   get:
+  #   put:
+  #   delete:
+
+  # /{restaurantId}/reservation/{reservationId}:
+  #   post:
+  #   get:
+  #   put:
+  #   delete:
+
+components:
+  schemas:
+    Restaurant:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        legalEntityName:
+          type: string
+        inn:
+          type: integer
+        comment:
+          type: string
+
+    Employee:
+      type: object
+      properties:
+        id:
+          type: integer
+        login:
+          type: string
+        surname:
+          type: string
+        patronymic:
+          type: string
+        comment:
+          type: string
+        changedPassword:
+          type: boolean
+        restaurantId:
+          type: integer
+
+    Table:
+      type: object
+      properties:
+        id:
+          type: integer
+        number:
+          type: integer
+        seatsNumber:
+          type: integer
+        state:
+          type: string
+        restaurantId:
+          type: integer
+        reservationIds:
+          type: array
+          items:
+            type: integer
+
+    Reservation:
+      type: object
+      properties:
+        id:
+          type: integer
+        personsNumber:
+          type: integer
+        clientPhoneNumber:
+          type: string
+        clientName:
+          type: string
+        startDateTime:
+          type: string
+        durationInterval:
+          type: integer
+        employeeFullName:
+          type: string
+        creatingDateTime:
+          type: string
+        state:
+          type: string
+        comment:
+          type: string
+        restaurantId:
+          type: integer
+        tableIds:
+          type: array
+          items:
+            type: integer
