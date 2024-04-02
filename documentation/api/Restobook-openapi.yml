@@ -11,20 +11,111 @@ paths:
         content: 
           application/json:
             schema:
-              $ref: "#/components/schemas/Restaurant"
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Ресторан для студентов
+                legalEntityName:
+                  type: string
+                  example: ООО Накормим студентов
+                inn:
+                  type: integer
+                  example: 991154917952
+                comment:
+                  type: string
+                  example: Да, мы существуем и кормим студентов только лучшей едой!
         required: true
       responses:
+        201:
+          description: Ресторан создан
+        400:
+          description: Something wrong with data request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        401:
+          description: Client is unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        403:
+          description: Client isn't an vendor admin
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        500:
+          description: Any internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    get:
+      responses:
         200:
-          description: OK
-    # get:
-    # put:
-    # delete:
+          description: Данные о всех ресторанах получены
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Restaurant"
+        500:
+          description: Any internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
 
-  # /restaurant/{restaurantId}:
-  #   post:
-  #   get:
-  #   put:
-  #   delete:
+  /restaurant/{restaurantId}:
+    get:
+      description: Получить ресторан по идентификатору
+      parameters:
+        - name: restaurantId
+          in: path
+          description: Идентификатор получаемого ресторана
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Данные о нужном ресторане
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Restaurant"
+    put:
+      description: Имзменить данные о ресторане по идентификатору
+      parameters:
+        - name: restaurantId
+          in: path
+          description: Идентификатор изменяемого ресторана
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Restaurant"
+      responses:
+        204:
+          description: Данные о нужном ресторане изменены
+    delete:
+      description: Получить ресторан по идентификатору
+      parameters:
+        - name: restaurantId
+          in: path
+          description: Идентификатор удаляемого ресторана
+          required: true
+          schema:
+            type: integer
+      responses:
+        204:
+          description: Данные о нужном ресторане удалены
 
   # /{restaurantId}/employee:
   #   post:
@@ -69,14 +160,19 @@ components:
       properties:
         id:
           type: integer
+          example: 1
         name:
           type: string
+          example: Ресторан для студентов
         legalEntityName:
           type: string
+          example: ООО Накормим студентов
         inn:
           type: integer
+          example: 991154917952
         comment:
           type: string
+          example: Да, мы существуем и кормим студентов только лучшей едой!
 
     Employee:
       type: object
@@ -143,3 +239,13 @@ components:
           type: array
           items:
             type: integer
+
+    Error:
+      type: object
+      properties:
+        dateTime:
+          type: string
+        messages:
+          type: array
+          items:
+            type: string
