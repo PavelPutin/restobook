@@ -117,11 +117,83 @@ paths:
         204:
           description: Данные о нужном ресторане удалены
 
-  # /{restaurantId}/employee:
-  #   post:
-  #   get:
-  #   put:
-  #   delete:
+  /{restaurantId}/employee:
+    post:
+      description: Создать нового сотрудника в ресторане restaurantId
+      parameters:
+        - name: restaurantId
+          in: path
+          description: Идентификатор ресторана
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                login:
+                  type: string
+                surname:
+                  type: string
+                patronymic:
+                  type: string
+                comment:
+                  type: string
+                changedPassword:
+                  type: boolean
+                restaurantId:
+                  type: integer
+      responses:
+        201:
+          description: Сотрудник создан
+        401:
+          description: Клиент не аутентифицирован
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        403:
+          description: Клиент не является администратором вендора или администратором ресторана restaurantId
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        500:
+          description: Any internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    get:
+      description: Получить всех сотрудников в ресторане restaurantId
+      parameters:
+        - name: restaurantId
+          in: path
+          description: Идентификатор ресторана
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Данные о всех сотрудниках ресторана restaurantId
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Employee"
+        404:
+          description: Ресторан не найден
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        500:
+          description: Any internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
 
   # /{restaurantId}/employee/{employeeId}:
   #   post:
