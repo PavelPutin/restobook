@@ -4,6 +4,9 @@ info:
   version: '1.0'
 servers:
   - url: https://api.server.test/v1
+tags:
+  - name: employee
+    description: Действия над сотрудниками ресторанов
 paths:
   /restaurant:
     post:
@@ -219,11 +222,141 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
-  # /{restaurantId}/employee/{employeeId}:
-  #   post:
-  #   get:
-  #   put:
-  #   delete:
+  /{restaurantId}/employee/{employeeId}:
+    get:
+      tags:
+        - employee
+      description: Получить данные об определённом сотруднике
+      parameters:
+        - name: restaurantId
+          in: path
+          description: Идентификатор получаемого ресторана
+          required: true
+          schema:
+            type: integer
+        - name: employeeId
+          in: path
+          description: Идентификатор получаемого сотрудника
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Данные о нужном сотруднике
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Employee"
+        401:
+          description: Клиент не аутентифицирован
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        403:
+          description: Клиент не является администратором ресторана restaurantId
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        404:
+          description: Ресторан или сотрудник не найдены
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        default:
+          description: Ошибка сервера
+    put:
+      tags:
+        - employee
+      description: Имзменить данные об определённом сотруднике
+      parameters:
+        - name: restaurantId
+          in: path
+          description: Идентификатор получаемого ресторана
+          required: true
+          schema:
+            type: integer
+        - name: employeeId
+          in: path
+          description: Идентификатор получаемого сотрудника
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Employee"
+      responses:
+        204:
+          description: Данные о нужном сотруднике изменены
+        401:
+          description: Клиент не аутентифицирован
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        403:
+          description: Клиент не является администратором ресторана restaurantId
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        404:
+          description: Ресторан или сотрудник не найдены
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        default:
+          description: Ошибка сервера
+    delete:
+      tags:
+        - employee
+      description: Удалить данные об определённом сотруднике
+      parameters:
+        - name: restaurantId
+          in: path
+          description: Идентификатор удаляемого ресторана
+          required: true
+          schema:
+            type: integer
+        - name: employeeId
+          in: path
+          description: Идентификатор удаляемого сотрудника
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Employee"
+      responses:
+        204:
+          description: Данные о нужном сотруднике удалены
+        401:
+          description: Клиент не аутентифицирован
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        403:
+          description: Клиент не является администратором ресторана restaurantId
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        404:
+          description: Ресторан или сотрудник не найдены
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        default:
+          description: Ошибка сервера
 
   # /{restaurantId}/table:
   #   post:
@@ -275,18 +408,28 @@ components:
       properties:
         id:
           type: integer
+          example: 1
         login:
           type: string
+          example: pupkin_v_v_1
         surname:
           type: string
+          example: Пупкин
+        name:
+          type: string
+          example: Василий
         patronymic:
           type: string
+          example: Васильевич
         comment:
           type: string
+          example: Отличный официант
         changedPassword:
           type: boolean
+          example: false
         restaurantId:
           type: integer
+          example: 1
 
     Table:
       type: object
