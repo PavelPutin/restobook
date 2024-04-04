@@ -11,6 +11,8 @@ tags:
     description: Действия над сотрудниками ресторанов
   - name: table
     description: Действия над столами
+  - name: reservation
+    description: Действия над бронями
 paths:
   /restaurant:
     post:
@@ -596,17 +598,265 @@ paths:
                 $ref: "#/components/schemas/Error"
 
 
-  # /{restaurantId}/reservation:
-  #   post:
-  #   get:
-  #   put:
-  #   delete:
+  /{restaurantId}/reservation:
+    post:
+      tags:
+        - reservation
+      description: Добавить бронь
+      parameters:
+        - name: restaurantId
+          in: path
+          description: Идентификатор ресторана
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                personsNumber:
+                  type: integer
+                clientPhoneNumber:
+                  type: string
+                clientName:
+                  type: string
+                startDateTime:
+                  type: string
+                durationInterval:
+                  type: integer
+                employeeFullName:
+                  type: string
+                creatingDateTime:
+                  type: string
+                state:
+                  type: string
+                comment:
+                  type: string
+                restaurantId:
+                  type: integer
+                tableIds:
+                  type: array
+                  items:
+                    type: integer
+      responses:
+        201:
+          description: Бронь создана
+        401:
+          description: Клиент не аутентифицирован
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        403:
+          description: Клиент не является  администратором ресторана restaurantId
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        404:
+          description: Ресторан не найден
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        default:
+          description: Any internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"   
+    get:
+      tags:
+        - reservation
+      description: Получить все брони в ресторане restaurantId
+      parameters:
+        - name: restaurantId
+          in: path
+          description: Идентификатор ресторана
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Данные о всех бронях ресторана restaurantId
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Reservation"
+        401:
+          description: Клиент не аутентифицирован
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        403:
+          description: Клиент не является  администратором ресторана restaurantId
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        404:
+          description: Ресторан не найден
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        default:
+          description: Ошибка на сервере
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
 
-  # /{restaurantId}/reservation/{reservationId}:
-  #   post:
-  #   get:
-  #   put:
-  #   delete:
+  /{restaurantId}/reservation/{reservationId}:
+    get:
+      tags:
+        - reservation
+      description: Получить данные об определённом брони
+      parameters:
+        - name: restaurantId
+          in: path
+          description: Идентификатор ресторана
+          required: true
+          schema:
+            type: integer
+        - name: reservationId
+          in: path
+          description: Идентификатор получаемой брони
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Данные о нужной брони
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Reservation"
+        401:
+          description: Клиент не аутентифицирован
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        403:
+          description: Клиент не является  администратором ресторана restaurantId
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        404:
+          description: Ресторан не найден
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        default:
+          description: Ошибка на сервере
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    put:
+      tags:
+        - reservation
+      description: Имзменить данные об определённой брони
+      parameters:
+        - name: restaurantId
+          in: path
+          description: Идентификатор ресторана
+          required: true
+          schema:
+            type: integer
+        - name: reservationId
+          in: path
+          description: Идентификатор изменяемой брони
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Reservation"
+      responses:
+        204:
+          description: Данные о нужной брони изменены
+        401:
+          description: Клиент не аутентифицирован
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        403:
+          description: Клиент не является администратором ресторана restaurantId
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        404:
+          description: Ресторан или бронь не найдены
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        default:
+          description: Ошибка сервера
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    delete:
+      tags:
+        - reservation
+      description: Удалить данные об определённой брони
+      parameters:
+        - name: restaurantId
+          in: path
+          description: Идентификатор удаляемого ресторана
+          required: true
+          schema:
+            type: integer
+        - name: reservationId
+          in: path
+          description: Идентификатор удаляемой брони
+          required: true
+          schema:
+            type: integer
+      responses:
+        204:
+          description: Данные о нужной брони удалены
+        401:
+          description: Клиент не аутентифицирован
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        403:
+          description: Клиент не является администратором ресторана restaurantId
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        404:
+          description: Ресторан или бронь не найдены
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        default:
+          description: Ошибка сервера
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
 
 components:
   schemas:
