@@ -9,6 +9,8 @@ tags:
     description: Действия над ресторанами
   - name: employee
     description: Действия над сотрудниками ресторанов
+  - name: table
+    description: Действия над столами
 paths:
   /restaurant:
     post:
@@ -374,17 +376,225 @@ paths:
         default:
           description: Ошибка сервера
 
-  # /{restaurantId}/table:
-  #   post:
-  #   get:
-  #   put:
-  #   delete:
+  /{restaurantId}/table:
+    post:
+      tags:
+        - table
+      description: Добавить стол
+      parameters:
+        - name: restaurantId
+          in: path
+          description: Идентификатор получаемого ресторана
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                number:
+                  type: integer
+                seatsNumber:
+                  type: integer
+                state:
+                  type: string
+                restaurantId:
+                  type: integer
+      responses:
+        201:
+          description: Стол создан
+        401:
+          description: Клиент не аутентифицирован
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        403:
+          description: Клиент не является  администратором ресторана restaurantId
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        404:
+          description: Ресторан не найден
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        500:
+          description: Any internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"   
+    get:
+      tags:
+        - table
+      description: Получить все столы в ресторане restaurantId
+      parameters:
+        - name: restaurantId
+          in: path
+          description: Идентификатор получаемого ресторана
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Данные о всех столах ресторана restaurantId
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Table"
+        404:
+          description: Ресторан не найден
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        500:
+          description: Ошибка на сервере
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
 
-  # /{restaurantId}/table/{tableId}:
-  #   post:
-  #   get:
-  #   put:
-  #   delete:
+  /{restaurantId}/table/{tableId}:
+    get:
+      tags:
+        - table
+      description: Получить данные об определённом столе
+      parameters:
+        - name: restaurantId
+          in: path
+          description: Идентификатор получаемого ресторана
+          required: true
+          schema:
+            type: integer
+        - name: tableId
+          in: path
+          description: Идентификатор получаемого стола
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Данные о нужном столе
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Table"
+        404:
+          description: Ресторан или стол не найден
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        default:
+          description: Ошибка на сервере
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    put:
+      tags:
+        - table
+      description: Имзменить данные об определённом столе
+      parameters:
+        - name: restaurantId
+          in: path
+          description: Идентификатор получаемого ресторана
+          required: true
+          schema:
+            type: integer
+        - name: tableId
+          in: path
+          description: Идентификатор получаемого стола
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Table"
+      responses:
+        204:
+          description: Данные о нужном столе изменены
+        401:
+          description: Клиент не аутентифицирован
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        403:
+          description: Клиент не является администратором ресторана restaurantId
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        404:
+          description: Ресторан или стол не найдены
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        default:
+          description: Ошибка сервера
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    delete:
+      tags:
+        - table
+      description: Удалить данные об определённом столе
+      parameters:
+        - name: restaurantId
+          in: path
+          description: Идентификатор удаляемого ресторана
+          required: true
+          schema:
+            type: integer
+        - name: tableId
+          in: path
+          description: Идентификатор удаляемого стола
+          required: true
+          schema:
+            type: integer
+      responses:
+        204:
+          description: Данные о нужном столе удалены
+        401:
+          description: Клиент не аутентифицирован
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        403:
+          description: Клиент не является администратором ресторана restaurantId
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        404:
+          description: Ресторан или стол не найдены
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        default:
+          description: Ошибка сервера
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
 
   # /{restaurantId}/reservation:
   #   post:
