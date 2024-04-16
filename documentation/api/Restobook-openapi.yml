@@ -41,19 +41,19 @@ paths:
         201:
           description: Ресторан создан
         400:
-          description: Something wrong with data request
+          description: Данные запроса не прошли валидацию на сервере
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
         401:
-          description: Client is unauthorized
+          description: Клиент не аутентифицирован
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
         403:
-          description: Client isn't an vendor admin
+          description: Клиент не является администратором вендора или администратором ресторана restaurantId
           content:
             application/json:
               schema:
@@ -76,6 +76,18 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/Restaurant"
+        401:
+          description: Клиент не аутентифицирован
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        403:
+          description: Клиент не является администратором вендора
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
         500:
           description: Any internal server error
           content:
@@ -102,12 +114,26 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Restaurant"
+        401:
+          description: Клиент не аутентифицирован
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        403:
+          description: Клиент не является администратором ресторана restaurantId
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
         404:
           description: Ресторан не найден
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+        500:
+          description: Ошибка сервера
     put:
       tags:
         - restaurant
@@ -127,16 +153,36 @@ paths:
       responses:
         204:
           description: Данные о нужном ресторане изменены
+        400:
+          description: Данные запроса не прошли валидацию на сервере
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        401:
+          description: Клиент не аутентифицирован
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        403:
+          description: Клиент не является администратором ресторана restaurantId
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
         404:
           description: Ресторан не найден
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+        500:
+          description: Ошибка сервера 
     delete:
       tags:
         - restaurant
-      description: Получить ресторан по идентификатору
+      description: Удалить ресторан по идентификатору
       parameters:
         - name: restaurantId
           in: path
@@ -147,12 +193,27 @@ paths:
       responses:
         204:
           description: Данные о нужном ресторане удалены
+        401:
+          description: Клиент не аутентифицирован
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        403:
+          description: Клиент не является администратором ресторана restaurantId
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
         404:
           description: Ресторан не найден
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+        500:
+          description: Ошибка сервера 
+    
 
   /{restaurantId}/employee:
     post:
@@ -229,6 +290,18 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Employee"
+        401:
+          description: Клиент не аутентифицирован
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        403:
+          description: Клиент не является администратором ресторана restaurantId
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
         404:
           description: Ресторан не найден
           content:
@@ -285,7 +358,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-        default:
+        500:
           description: Ошибка сервера
     put:
       tags:
@@ -312,6 +385,12 @@ paths:
       responses:
         204:
           description: Данные о нужном сотруднике изменены
+        400:
+          description: Данные запроса не прошли валидацию на сервере
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
         401:
           description: Клиент не аутентифицирован
           content:
@@ -330,7 +409,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-        default:
+        500:
           description: Ошибка сервера
     delete:
       tags:
@@ -349,11 +428,6 @@ paths:
           required: true
           schema:
             type: integer
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/Employee"
       responses:
         204:
           description: Данные о нужном сотруднике удалены
@@ -375,8 +449,9 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-        default:
+        500:
           description: Ошибка сервера
+
 
   /{restaurantId}/table:
     post:
@@ -407,6 +482,12 @@ paths:
       responses:
         201:
           description: Стол создан
+        400:
+          description: Данные запроса не прошли валидацию на сервере
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
         401:
           description: Клиент не аутентифицирован
           content:
@@ -451,6 +532,18 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/Table"
+        401:
+          description: Клиент не аутентифицирован
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        403:
+          description: Клиент не является администратором ресторана restaurantId
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
         404:
           description: Ресторан не найден
           content:
@@ -491,13 +584,25 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/Table"
+        401:
+          description: Клиент не аутентифицирован
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        403:
+          description: Клиент не является администратором ресторана restaurantId
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
         404:
           description: Ресторан или стол не найден
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-        default:
+        500:
           description: Ошибка на сервере
           content:
             application/json:
@@ -528,6 +633,12 @@ paths:
       responses:
         204:
           description: Данные о нужном столе изменены
+        400:
+          description: Данные запроса не прошли валидацию на сервере
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
         401:
           description: Клиент не аутентифицирован
           content:
@@ -546,7 +657,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-        default:
+        500:
           description: Ошибка сервера
           content:
             application/json:
@@ -590,7 +701,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-        default:
+        500:
           description: Ошибка сервера
           content:
             application/json:
@@ -626,7 +737,7 @@ paths:
                   type: string
                 startDateTime:
                   type: string
-                durationInterval:
+                durationIntervalMinutes:
                   type: integer
                 employeeFullName:
                   type: string
@@ -645,6 +756,12 @@ paths:
       responses:
         201:
           description: Бронь создана
+        400:
+          description: Данные запроса не прошли валидацию на сервере
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
         401:
           description: Клиент не аутентифицирован
           content:
@@ -663,7 +780,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-        default:
+        500:
           description: Any internal server error
           content:
             application/json:
@@ -707,7 +824,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-        default:
+        500:
           description: Ошибка на сервере
           content:
             application/json:
@@ -757,7 +874,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-        default:
+        500:
           description: Ошибка на сервере
           content:
             application/json:
@@ -788,6 +905,12 @@ paths:
       responses:
         204:
           description: Данные о нужной брони изменены
+        400:
+          description: Данные запроса не прошли валидацию на сервере
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
         401:
           description: Клиент не аутентифицирован
           content:
@@ -806,7 +929,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-        default:
+        500:
           description: Ошибка сервера
           content:
             application/json:
@@ -850,7 +973,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-        default:
+        500:
           description: Ошибка сервера
           content:
             application/json:
@@ -938,7 +1061,7 @@ components:
           type: string
         startDateTime:
           type: string
-        durationInterval:
+        durationIntervalMinutes:
           type: integer
         employeeFullName:
           type: string
