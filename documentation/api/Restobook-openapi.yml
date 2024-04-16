@@ -13,6 +13,8 @@ tags:
     description: Действия над столами
   - name: reservation
     description: Действия над бронями
+  - name: auth
+    description: действия с аутентификацией
 paths:
   /restaurant:
     post:
@@ -980,6 +982,115 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+
+  /auth/login:
+    post:
+      description: войти в мобильное приложение
+      tags:
+      - auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                login:
+                  type: string
+                  example: pupkin_v_v_1
+                password:
+                  type: string
+                  example: qwerty
+      responses:
+        200:
+          description: успешный вход в мобильное приложение
+        401:
+          description: не удалось войти в мобильное приложение, потому что логин или пароль неправильные
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        500:
+          description: Ошибка на сервере
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        
+  /auth/admin/login:
+    post:
+      description: войти в систему как администратор вендора
+      tags:
+      - auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                login:
+                  type: string
+                  example: admin
+                password:
+                  type: string
+                  example: d0ntTryT04ccess
+      responses:
+        200:
+          description: успешный вход
+        401:
+          description: не удалось войти, потому что логин или пароль неправильные
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        500:
+          description: Ошибка на сервере
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /auth/{restaurantId}/{employeeId}/changepass:
+    put:
+      tags:
+        - auth
+      description: Изменить пароль сотрудника
+      parameters:
+        - name: restaurantId
+          in: path
+          description: Идентификатор ресторана
+          required: true
+          schema:
+            type: integer
+        - name: employeeId
+          in: path
+          description: Идентификатор сотрудника
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                newpassword:
+                  type: string
+                  example: str0ngP4ssw0rd
+      responses:
+        200:
+          description: пароль успешно изменён
+        401:
+          description: не удалось сменить пароль
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        500:
+          description: Ошибка на сервере
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
 
 components:
   schemas:
