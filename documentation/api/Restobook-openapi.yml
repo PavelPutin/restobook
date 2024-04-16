@@ -2,8 +2,11 @@ openapi: '3.0.2'
 info:
   title: API Restobook
   version: '1.0'
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
 servers:
-  - url: https://api.server.test/v1
+  - url: https://http://2778989-ta65313.twc1.net
 tags:
   - name: restaurant
     description: Действия над ресторанами
@@ -15,11 +18,17 @@ tags:
     description: Действия над бронями
   - name: auth
     description: действия с аутентификацией
+
+security:
+  - restobook-security: []
+
 paths:
   /restaurant:
     post:
+      operationId: createRestaurant
       tags:
         - restaurant
+      summary: создать ресторан
       requestBody:
         content: 
           application/json:
@@ -67,8 +76,10 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
     get:
+      operationId: getRestaurants
       tags:
         - restaurant
+      summary: получить список всех ресторанов
       responses:
         200:
           description: Данные о всех ресторанах получены
@@ -99,9 +110,10 @@ paths:
 
   /restaurant/{restaurantId}:
     get:
+      operationId: getRestaurant
       tags:
         - restaurant     
-      description: Получить ресторан по идентификатору
+      summary: Получить ресторан по идентификатору
       parameters:
         - name: restaurantId
           in: path
@@ -137,9 +149,10 @@ paths:
         500:
           description: Ошибка сервера
     put:
+      operationId: updateRestaurant
       tags:
         - restaurant
-      description: Имзменить данные о ресторане по идентификатору
+      summary: Имзменить данные о ресторане по идентификатору
       parameters:
         - name: restaurantId
           in: path
@@ -182,9 +195,10 @@ paths:
         500:
           description: Ошибка сервера 
     delete:
+      operationId: deleteRestaurant
       tags:
         - restaurant
-      description: Удалить ресторан по идентификатору
+      summary: Удалить ресторан по идентификатору
       parameters:
         - name: restaurantId
           in: path
@@ -217,11 +231,12 @@ paths:
           description: Ошибка сервера 
     
 
-  /{restaurantId}/employee:
+  /restaurant/{restaurantId}/employee:
     post:
+      operationId: createEmployee
       tags:
         - employee
-      description: Создать нового сотрудника в ресторане restaurantId
+      summary: Создать нового сотрудника в ресторане restaurantId
       parameters:
         - name: restaurantId
           in: path
@@ -275,9 +290,10 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
     get:
+      operationId: getEmployees
       tags:
         - employee
-      description: Получить всех сотрудников в ресторане restaurantId
+      summary: Получить всех сотрудников в ресторане restaurantId
       parameters:
         - name: restaurantId
           in: path
@@ -317,11 +333,12 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
-  /{restaurantId}/employee/{employeeId}:
+  /restaurant/{restaurantId}/employee/{employeeId}:
     get:
+      operationId: getEmployee
       tags:
         - employee
-      description: Получить данные об определённом сотруднике
+      summary: Получить данные об определённом сотруднике
       parameters:
         - name: restaurantId
           in: path
@@ -363,9 +380,10 @@ paths:
         500:
           description: Ошибка сервера
     put:
+      operationId: updateEmployee
       tags:
         - employee
-      description: Имзменить данные об определённом сотруднике
+      summary: Имзменить данные об определённом сотруднике
       parameters:
         - name: restaurantId
           in: path
@@ -414,9 +432,10 @@ paths:
         500:
           description: Ошибка сервера
     delete:
+      operationId: deleteEmployee
       tags:
         - employee
-      description: Удалить данные об определённом сотруднике
+      summary: Удалить данные об определённом сотруднике
       parameters:
         - name: restaurantId
           in: path
@@ -455,11 +474,12 @@ paths:
           description: Ошибка сервера
 
 
-  /{restaurantId}/table:
+  /restaurant/{restaurantId}/table:
     post:
+      operationId: createTable
       tags:
         - table
-      description: Добавить стол
+      summary: Добавить стол
       parameters:
         - name: restaurantId
           in: path
@@ -515,9 +535,10 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"   
     get:
+      operationId: getTables
       tags:
         - table
-      description: Получить все столы в ресторане restaurantId
+      summary: Получить все столы в ресторане restaurantId
       parameters:
         - name: restaurantId
           in: path
@@ -559,11 +580,12 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
-  /{restaurantId}/table/{tableId}:
+  /restaurant/{restaurantId}/table/{tableId}:
     get:
+      operationId: getTable
       tags:
         - table
-      description: Получить данные об определённом столе
+      summary: Получить данные об определённом столе
       parameters:
         - name: restaurantId
           in: path
@@ -611,9 +633,10 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
     put:
+      operationId: updateTable
       tags:
         - table
-      description: Имзменить данные об определённом столе
+      summary: Имзменить данные об определённом столе
       parameters:
         - name: restaurantId
           in: path
@@ -666,9 +689,10 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
     delete:
+      operationId: deleteTable
       tags:
         - table
-      description: Удалить данные об определённом столе
+      summary: Удалить данные об определённом столе
       parameters:
         - name: restaurantId
           in: path
@@ -711,11 +735,12 @@ paths:
                 $ref: "#/components/schemas/Error"
 
 
-  /{restaurantId}/reservation:
+  /restaurant/{restaurantId}/reservation:
     post:
+      operationId: createReservation
       tags:
         - reservation
-      description: Добавить бронь
+      summary: Добавить бронь
       parameters:
         - name: restaurantId
           in: path
@@ -729,8 +754,6 @@ paths:
             schema:
               type: object
               properties:
-                id:
-                  type: integer
                 personsNumber:
                   type: integer
                 clientPhoneNumber:
@@ -743,14 +766,8 @@ paths:
                   type: integer
                 employeeFullName:
                   type: string
-                creatingDateTime:
-                  type: string
-                state:
-                  type: string
                 comment:
                   type: string
-                restaurantId:
-                  type: integer
                 tableIds:
                   type: array
                   items:
@@ -789,9 +806,10 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"   
     get:
+      operationId: getReservations
       tags:
         - reservation
-      description: Получить все брони в ресторане restaurantId
+      summary: Получить все брони в ресторане restaurantId
       parameters:
         - name: restaurantId
           in: path
@@ -833,11 +851,12 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
-  /{restaurantId}/reservation/{reservationId}:
+  /restaurant/{restaurantId}/reservation/{reservationId}:
     get:
+      operationId: getReservation
       tags:
         - reservation
-      description: Получить данные об определённом брони
+      summary: Получить данные об определённом брони
       parameters:
         - name: restaurantId
           in: path
@@ -883,9 +902,10 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
     put:
+      operationId: updateReservation
       tags:
         - reservation
-      description: Имзменить данные об определённой брони
+      summary: Имзменить данные об определённой брони
       parameters:
         - name: restaurantId
           in: path
@@ -938,9 +958,10 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
     delete:
+      operationId: deleteReservation
       tags:
         - reservation
-      description: Удалить данные об определённой брони
+      summary: Удалить данные об определённой брони
       parameters:
         - name: restaurantId
           in: path
@@ -985,7 +1006,8 @@ paths:
 
   /auth/login:
     post:
-      description: войти в мобильное приложение
+      operationId: loginEmployee
+      summary: войти в мобильное приложение
       tags:
       - auth
       requestBody:
@@ -1018,7 +1040,8 @@ paths:
         
   /auth/admin/login:
     post:
-      description: войти в систему как администратор вендора
+      operationId: loginVendorAdmin
+      summary: войти в систему как администратор вендора
       tags:
       - auth
       requestBody:
@@ -1051,9 +1074,10 @@ paths:
 
   /auth/{restaurantId}/{employeeId}/changepass:
     put:
+      operationId: changePassword
       tags:
         - auth
-      description: Изменить пароль сотрудника
+      summary: Изменить пароль сотрудника
       parameters:
         - name: restaurantId
           in: path
@@ -1093,6 +1117,15 @@ paths:
                 $ref: "#/components/schemas/Error"
 
 components:
+  securitySchemes:
+    restobook-security:
+      type: oauth2
+      flows:
+        password:
+          scopes:
+            write:all: "Изменять данные о ресторане" 
+            read:all: "Получать данные о ресторане"
+          tokenUrl: https://http://2778989-ta65313.twc1.net/auth/login
   schemas:
     Restaurant:
       type: object
