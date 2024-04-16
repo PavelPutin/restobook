@@ -33,8 +33,8 @@ paths:
                   type: string
                   example: ООО Накормим студентов
                 inn:
-                  type: integer
-                  example: 991154917952
+                  type: string
+                  example: '991154917952'
                 comment:
                   type: string
                   example: Да, мы существуем и кормим студентов только лучшей едой!
@@ -1107,8 +1107,8 @@ components:
           type: string
           example: ООО Накормим студентов
         inn:
-          type: integer
-          example: 991154917952
+          type: string
+          example: '991154917952'
         comment:
           type: string
           example: Да, мы существуем и кормим студентов только лучшей едой!
