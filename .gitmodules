@@ -1,12 +1,12 @@
 [submodule "restobook_mobile_client"]
 	path = restobook_mobile_client
 	url = https://github.com/PavelPutin/restobook_mobile_client.git
-	branch = master
+	branch = origin/master
 [submodule "restobook_web"]
 	path = restobook_web
 	url = https://github.com/PavelPutin/restobook_web.git
-	branch = master
+	branch = origin/master
 [submodule "restobook_backend"]
 	path = restobook_backend
 	url = https://github.com/PavelPutin/restobook_backend.git
-	branch = master
+	branch = origin/master
