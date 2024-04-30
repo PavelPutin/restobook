@@ -32,6 +32,9 @@
 | Администратор | putin_p_a    | qwerty |
 | Сотрудник     | frolov_m_vR1 | qwerty |
 
+### Отчёт о проделанной работе (2 аттестация)
+Отчёт [(Pptx)](https://github.com/PavelPutin/restobook/blob/master/%D0%BE%D1%82%D1%87%D1%91%D1%82%D1%8B%20%D0%BE%20%D0%BF%D1%80%D0%BE%D0%B4%D0%B5%D0%BB%D0%B0%D0%BD%D0%BD%D0%BE%D0%B9%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B5/%D0%9E%D1%82%D1%87%D1%91%D1%82%20%D0%BE%20%D0%BF%D1%80%D0%BE%D0%B4%D0%B5%D0%BB%D0%B0%D0%BD%D0%BD%D0%BE%D0%B9%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B5.pptx) [(PDF)](https://github.com/PavelPutin/restobook/blob/master/%D0%BE%D1%82%D1%87%D1%91%D1%82%D1%8B%20%D0%BE%20%D0%BF%D1%80%D0%BE%D0%B4%D0%B5%D0%BB%D0%B0%D0%BD%D0%BD%D0%BE%D0%B9%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B5/%D0%9E%D1%82%D1%87%D1%91%D1%82%20%D0%BE%20%D0%BF%D1%80%D0%BE%D0%B4%D0%B5%D0%BB%D0%B0%D0%BD%D0%BD%D0%BE%D0%B9%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B5.pdf)
+
 ### Ссылки на подмодули
 - [Backend](https://github.com/PavelPutin/restobook_backend)
 - [Frontend для сотрудников ресторанов](https://github.com/PavelPutin/restobook_mobile_client)
