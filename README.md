@@ -18,8 +18,9 @@
 ### Презентация проекта
 - Сопроводительное письмо [(Docx)](https://github.com/PavelPutin/restobook/blob/master/documentation/%D1%81%D0%BE%D0%BF%D1%80%D0%BE%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D0%B8%D1%81%D1%8C%D0%BC%D0%BE/%D0%A1%D0%BE%D0%BF%D1%80%D0%BE%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D0%B8%D1%81%D1%8C%D0%BC%D0%BE.docx) [(PDF)](https://github.com/PavelPutin/restobook/blob/master/documentation/%D1%81%D0%BE%D0%BF%D1%80%D0%BE%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D0%B8%D1%81%D1%8C%D0%BC%D0%BE/%D0%A1%D0%BE%D0%BF%D1%80%D0%BE%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BF%D0%B8%D1%81%D1%8C%D0%BC%D0%BE.pdf)
 - Презентация ТЗ [(Pptx)](https://github.com/PavelPutin/restobook/blob/master/presentation%20(technical%20specification)/Restobook.pptx) [(PDF)](https://github.com/PavelPutin/restobook/blob/master/presentation%20(technical%20specification)/Restobook.pdf)
-- Видео презентация ТЗ [YouTube](https://www.youtube.com/watch?v=wSFgZj5X8ig)
+- Видеопрезентация ТЗ [YouTube](https://www.youtube.com/watch?v=wSFgZj5X8ig)
 - Презентация продукта [(Pptx)](https://github.com/PavelPutin/restobook/blob/master/presentation%20(product)/Restobook.pptx) [(PDF)](https://github.com/PavelPutin/restobook/blob/master/presentation%20(product)/Restobook.pdf)
+- Видеопрезентация продукта [YouTube](https://youtu.be/JaApGt-8Cmk)
 - Демонстрация мобильного приложения [YouTube](https://www.youtube.com/watch?v=rEseCsgocn8)
 
 ### Документация
