@@ -29,6 +29,11 @@
 - Курсовой проект [(Docx)](https://github.com/PavelPutin/restobook/blob/master/documentation/%D0%BA%D1%83%D1%80%D1%81%D0%BE%D0%B2%D0%BE%D0%B9%20%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82/%D0%9A%D1%83%D1%80%D1%81%D0%BE%D0%B2%D0%BE%D0%B9%20%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82.docx) [(PDF)](https://github.com/PavelPutin/restobook/blob/master/documentation/%D0%BA%D1%83%D1%80%D1%81%D0%BE%D0%B2%D0%BE%D0%B9%20%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82/%D0%9A%D1%83%D1%80%D1%81%D0%BE%D0%B2%D0%BE%D0%B9%20%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82.pdf)
 - [Документация к API](https://restobook.fun/docs/Restobook-openapi.html)
 
+
+### Приложение (!Прототип!)
+[Restobook.apk](https://github.com/PavelPutin/restobook_mobile_client/releases/tag/v1.0.0)
+Примечание к прототипу: данные являются тестовыми, взаимодействие с сервером не реализовано в полном объёме, находится в стадии активной разраобтки
+
 ### Тестовые данные для входа
 |               | Логин        | Пароль |
 |---------------|--------------|--------|
