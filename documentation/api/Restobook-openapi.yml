@@ -487,7 +487,7 @@ paths:
       parameters:
         - name: restaurantId
           in: path
-          description: Идентификатор получаемого ресторана
+          description: Идентификатор ресторана
           required: true
           schema:
             type: integer
@@ -499,15 +499,47 @@ paths:
               properties:
                 number:
                   type: integer
+                  example: 1
                 seatsNumber:
                   type: integer
+                  example: 5
                 state:
                   type: string
+                  example: "NORMAL"
                 restaurantId:
                   type: integer
+                  example: 1
       responses:
-        201:
+        200:
           description: Стол создан
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  number:
+                    type: integer
+                    example: 1
+                  seatsNumber:
+                    type: integer
+                    example: 5
+                  state:
+                    type: string
+                    example: "NORMAL"
+                  comment:
+                    type: string
+                    example: null
+                  restaurantId:
+                    type: integer
+                    example: 1
+                  reservationIds:
+                    type: array
+                    items:
+                      type: integer
+                    example: []
         400:
           description: Данные запроса не прошли валидацию на сервере
           content:
@@ -658,10 +690,51 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Table"
+              type: object
+              properties:
+                id:
+                  type: integer
+                  example: 2
+                number:
+                  type: integer
+                  example: 1
+                seatsNumber:
+                  type: integer
+                  example: 5
+                state:
+                  type: string
+                  example: BROKEN
       responses:
-        204:
+        200:
           description: Данные о нужном столе изменены
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 2
+                  number:
+                    type: integer
+                    example: 1
+                  seatsNumber:
+                    type: integer
+                    example: 5
+                  state:
+                    type: string
+                    example: BROKEN
+                  comment:
+                    type: string
+                    example: null
+                  restaurantId:
+                    type: integer
+                    example: 2
+                  reservationIds:
+                    type: array
+                    items:
+                      type: integer
+                    example: []
         400:
           description: Данные запроса не прошли валидацию на сервере
           content:
@@ -760,25 +833,76 @@ paths:
               properties:
                 personsNumber:
                   type: integer
+                  example: 3
                 clientPhoneNumber:
                   type: string
+                  example: "79010973250"
                 clientName:
                   type: string
+                  example: "Павел"
                 startDateTime:
                   type: string
+                  example: "2024-06-03T05:23:00Z"
                 durationIntervalMinutes:
                   type: integer
+                  example: 45
                 employeeFullName:
                   type: string
+                  example: "Фролов Макар"
                 comment:
                   type: string
+                  example: null
                 tableIds:
                   type: array
                   items:
                     type: integer
+                  example: [5]
       responses:
         201:
           description: Бронь создана
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 4
+                  personsNumber:
+                    type: integer
+                    example: 3
+                  clientPhoneNumber:
+                    type: integer
+                    example: "79010973250"
+                  clientName:
+                    type: integer
+                    example: "Павел"
+                  startDateTime:
+                    type: integer
+                    example: "2024-06-03T05:23:00Z"
+                  durationIntervalMinutes:
+                    type: integer
+                    example: 45
+                  employeeFullName:
+                    type: integer
+                    example: "Фролов Макар"
+                  creatingDateTime:
+                    type: integer
+                    example: "2024-06-03T05:23:01.991595461Z"
+                  state:
+                    type: integer
+                    example: "WAITING"
+                  comment:
+                    type: integer
+                    example: null
+                  restaurantId:
+                    type: integer
+                    example: 2
+                  tableIds:
+                    type: integer
+                    items:
+                      type: integer
+                    example: [5]
         400:
           description: Данные запроса не прошли валидацию на сервере
           content:
@@ -814,6 +938,7 @@ paths:
       tags:
         - reservation
       summary: Получить все брони в ресторане restaurantId
+    
       parameters:
         - name: restaurantId
           in: path
@@ -821,6 +946,13 @@ paths:
           required: true
           schema:
             type: integer
+        - name: dateTime
+          in: query
+          description: Выбранное время
+          required: false
+          schema:
+            type: string
+            example: "2024-05-27T04:20:12.410408Z"
       responses:
         200:
           description: Данные о всех бронях ресторана restaurantId
@@ -927,10 +1059,90 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Reservation"
+              type: object
+              properties:
+                id:
+                  type: integer
+                  example: 4
+                personsNumber:
+                  type: integer
+                  example: 3
+                clientPhoneNumber:
+                  type: string
+                  example: "79010973250"
+                clientName:
+                  type: string
+                  example: "Павел"
+                startDateTime:
+                  type: string
+                  example: "2024-06-03T05:23:00Z"
+                durationIntervalMinutes:
+                  type: integer
+                  example: 45
+                employeeFullName:
+                  type: string
+                  example: "Фролов Макар"
+                creatingDateTime:
+                  type: string
+                  example: "2024-06-03T05:23:01.991595461Z"
+                state:
+                  type: string
+                  example: "OPEN"
+                comment:
+                  type: string
+                  example: null
+                restaurantId:
+                  type: integer
+                  example: 2
+                tableIds:
+                  type: integer
+                  example: [6]
       responses:
-        204:
+        200:
           description: Данные о нужной брони изменены
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 4
+                  personsNumber:
+                    type: integer
+                    example: 3
+                  clientPhoneNumber:
+                    type: string 
+                    example: "79010973250"
+                  clientName:
+                    type: string 
+                    example: "Павел"
+                  startDateTime:
+                    type: string 
+                    example: "2024-06-03T05:23:00Z"
+                  durationIntervalMinutes: 
+                    type: integer 
+                    example: 45
+                  employeeFullName:
+                    type: string 
+                    example: "Фролов Макар"
+                  creatingDateTime:
+                    type: string 
+                    example: "2024-06-03T05:23:01.991595Z"
+                  state:
+                    type: string 
+                    example: "OPEN"
+                  comment:
+                    type: string 
+                    example: null
+                  restaurantId: 
+                    type: integer
+                    example: 2
+                  tableIds:
+                    type: array
+                    items:
+                      type: integer
+                    example: [6]
         400:
           description: Данные запроса не прошли валидацию на сервере
           content:
