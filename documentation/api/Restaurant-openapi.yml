@@ -1,0 +1,91 @@
+openapi: '3.0.2'
+info:
+  title: API Restaurant
+  version: '1.0'
+  description: API для управления ресторанами и их сотрудниками
+paths:
+  /restaurants:
+    get:
+      summary: Получить список ресторанов
+      responses:
+        '200':
+          description: Список ресторанов
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Restaurant'
+    post:
+      summary: Создать ресторан
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Restaurant'
+      responses:
+        '201':
+          description: Ресторан создан
+  /employees:
+    get:
+      summary: Получить список сотрудников
+      responses:
+        '200':
+          description: Список сотрудников
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Employee'
+    post:
+      summary: Создать сотрудника
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Employee'
+      responses:
+        '201':
+          description: Сотрудник создан
+components:
+  schemas:
+    Restaurant:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Уникальный идентификатор ресторана
+        name:
+          type: string
+          description: Название ресторана
+        legalEntityName:
+          type: string
+          description: Название юридического лица
+        inn:
+          type: string
+          description: ИНН юридического лица
+        comment:
+          type: string
+          description: Комментарий о ресторане
+        employees:
+          type: array
+          description: Список сотрудников ресторана
+          items:
+            $ref: '#/components/schemas/Employee'
+        tables:
+          type: array
+          description: Список столов в ресторане
+          items:
+            $ref: '#/components/schemas/Table'
+        reservations:
+          type: array
+          description: Список бронирований в ресторане
+          items:
+            $ref: '#/components/schemas/Reservation'
+      required:
+        - name
+        - legalEntityName
+        - inn
