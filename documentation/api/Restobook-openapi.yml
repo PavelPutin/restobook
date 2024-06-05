@@ -51,6 +51,26 @@ paths:
       responses:
         201:
           description: Ресторан создан
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  name:
+                    type: string
+                    example: "Ресторан для студентов"
+                  legalEntityName:
+                    type: string
+                    example: "ООО Вкусно и точка"
+                  inn:
+                    type: string
+                    example: "291154917953"
+                  comment:
+                    type: string
+                    example: "Да, мы существуем и кормим студентов только лучшей едой!"
         400:
           description: Данные запроса не прошли валидацию на сервере
           content:
@@ -170,8 +190,12 @@ paths:
             schema:
               $ref: "#/components/schemas/Restaurant"
       responses:
-        204:
+        200:
           description: Данные о нужном ресторане изменены
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Restaurant"
         400:
           description: Данные запроса не прошли валидацию на сервере
           content:
@@ -256,19 +280,35 @@ paths:
               properties:
                 login:
                   type: string
+                  example: "putin"
+                name:
+                  type: string
+                  example: "Павел"
                 surname:
                   type: string
+                  example: "Путин"
                 patronymic:
                   type: string
+                  example: "Александрович"
                 comment:
                   type: string
-                changedPassword:
-                  type: boolean
+                  example: "Самый главный админ"
                 restaurantId:
                   type: integer
+                  example: 1
+                password:
+                  type: string
+                  example: qwerty
+                role:
+                  type: string
+                  example: restobook_admin
       responses:
-        201:
+        200:
           description: Сотрудник создан
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EmployeeResponse"
         401:
           description: Клиент не аутентифицирован
           content:
@@ -311,7 +351,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Employee"
+                $ref: "#/components/schemas/EmployeeResponse"
         401:
           description: Клиент не аутентифицирован
           content:
@@ -362,7 +402,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Employee"
+                $ref: "#/components/schemas/EmployeeResponse"
         401:
           description: Клиент не аутентифицирован
           content:
@@ -407,8 +447,12 @@ paths:
             schema:
               $ref: "#/components/schemas/Employee"
       responses:
-        204:
+        200:
           description: Данные о нужном сотруднике изменены
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EmployeeResponse"
         400:
           description: Данные запроса не прошли валидацию на сервере
           content:
@@ -487,7 +531,7 @@ paths:
       parameters:
         - name: restaurantId
           in: path
-          description: Идентификатор ресторана
+          description: Идентификатор получаемого ресторана
           required: true
           schema:
             type: integer
@@ -499,47 +543,15 @@ paths:
               properties:
                 number:
                   type: integer
-                  example: 1
                 seatsNumber:
                   type: integer
-                  example: 5
                 state:
                   type: string
-                  example: "NORMAL"
                 restaurantId:
                   type: integer
-                  example: 1
       responses:
-        200:
+        201:
           description: Стол создан
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                    example: 1
-                  number:
-                    type: integer
-                    example: 1
-                  seatsNumber:
-                    type: integer
-                    example: 5
-                  state:
-                    type: string
-                    example: "NORMAL"
-                  comment:
-                    type: string
-                    example: null
-                  restaurantId:
-                    type: integer
-                    example: 1
-                  reservationIds:
-                    type: array
-                    items:
-                      type: integer
-                    example: []
         400:
           description: Данные запроса не прошли валидацию на сервере
           content:
@@ -690,51 +702,10 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                id:
-                  type: integer
-                  example: 2
-                number:
-                  type: integer
-                  example: 1
-                seatsNumber:
-                  type: integer
-                  example: 5
-                state:
-                  type: string
-                  example: BROKEN
+              $ref: "#/components/schemas/Table"
       responses:
-        200:
+        204:
           description: Данные о нужном столе изменены
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                    example: 2
-                  number:
-                    type: integer
-                    example: 1
-                  seatsNumber:
-                    type: integer
-                    example: 5
-                  state:
-                    type: string
-                    example: BROKEN
-                  comment:
-                    type: string
-                    example: null
-                  restaurantId:
-                    type: integer
-                    example: 2
-                  reservationIds:
-                    type: array
-                    items:
-                      type: integer
-                    example: []
         400:
           description: Данные запроса не прошли валидацию на сервере
           content:
@@ -833,76 +804,25 @@ paths:
               properties:
                 personsNumber:
                   type: integer
-                  example: 3
                 clientPhoneNumber:
                   type: string
-                  example: "79010973250"
                 clientName:
                   type: string
-                  example: "Павел"
                 startDateTime:
                   type: string
-                  example: "2024-06-03T05:23:00Z"
                 durationIntervalMinutes:
                   type: integer
-                  example: 45
                 employeeFullName:
                   type: string
-                  example: "Фролов Макар"
                 comment:
                   type: string
-                  example: null
                 tableIds:
                   type: array
                   items:
                     type: integer
-                  example: [5]
       responses:
         201:
           description: Бронь создана
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                    example: 4
-                  personsNumber:
-                    type: integer
-                    example: 3
-                  clientPhoneNumber:
-                    type: integer
-                    example: "79010973250"
-                  clientName:
-                    type: integer
-                    example: "Павел"
-                  startDateTime:
-                    type: integer
-                    example: "2024-06-03T05:23:00Z"
-                  durationIntervalMinutes:
-                    type: integer
-                    example: 45
-                  employeeFullName:
-                    type: integer
-                    example: "Фролов Макар"
-                  creatingDateTime:
-                    type: integer
-                    example: "2024-06-03T05:23:01.991595461Z"
-                  state:
-                    type: integer
-                    example: "WAITING"
-                  comment:
-                    type: integer
-                    example: null
-                  restaurantId:
-                    type: integer
-                    example: 2
-                  tableIds:
-                    type: integer
-                    items:
-                      type: integer
-                    example: [5]
         400:
           description: Данные запроса не прошли валидацию на сервере
           content:
@@ -938,7 +858,6 @@ paths:
       tags:
         - reservation
       summary: Получить все брони в ресторане restaurantId
-    
       parameters:
         - name: restaurantId
           in: path
@@ -946,13 +865,6 @@ paths:
           required: true
           schema:
             type: integer
-        - name: dateTime
-          in: query
-          description: Выбранное время
-          required: false
-          schema:
-            type: string
-            example: "2024-05-27T04:20:12.410408Z"
       responses:
         200:
           description: Данные о всех бронях ресторана restaurantId
@@ -986,6 +898,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+
   /restaurant/{restaurantId}/reservation/{reservationId}:
     get:
       operationId: getReservation
@@ -1058,90 +971,10 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                id:
-                  type: integer
-                  example: 4
-                personsNumber:
-                  type: integer
-                  example: 3
-                clientPhoneNumber:
-                  type: string
-                  example: "79010973250"
-                clientName:
-                  type: string
-                  example: "Павел"
-                startDateTime:
-                  type: string
-                  example: "2024-06-03T05:23:00Z"
-                durationIntervalMinutes:
-                  type: integer
-                  example: 45
-                employeeFullName:
-                  type: string
-                  example: "Фролов Макар"
-                creatingDateTime:
-                  type: string
-                  example: "2024-06-03T05:23:01.991595461Z"
-                state:
-                  type: string
-                  example: "OPEN"
-                comment:
-                  type: string
-                  example: null
-                restaurantId:
-                  type: integer
-                  example: 2
-                tableIds:
-                  type: integer
-                  example: [6]
+              $ref: "#/components/schemas/Reservation"
       responses:
-        200:
+        204:
           description: Данные о нужной брони изменены
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                    example: 4
-                  personsNumber:
-                    type: integer
-                    example: 3
-                  clientPhoneNumber:
-                    type: string 
-                    example: "79010973250"
-                  clientName:
-                    type: string 
-                    example: "Павел"
-                  startDateTime:
-                    type: string 
-                    example: "2024-06-03T05:23:00Z"
-                  durationIntervalMinutes: 
-                    type: integer 
-                    example: 45
-                  employeeFullName:
-                    type: string 
-                    example: "Фролов Макар"
-                  creatingDateTime:
-                    type: string 
-                    example: "2024-06-03T05:23:01.991595Z"
-                  state:
-                    type: string 
-                    example: "OPEN"
-                  comment:
-                    type: string 
-                    example: null
-                  restaurantId: 
-                    type: integer
-                    example: 2
-                  tableIds:
-                    type: array
-                    items:
-                      type: integer
-                    example: [6]
         400:
           description: Данные запроса не прошли валидацию на сервере
           content:
@@ -1356,7 +1189,7 @@ components:
           example: ООО Накормим студентов
         inn:
           type: string
-          example: '991154917952'
+          example: '291154917953'
         comment:
           type: string
           example: Да, мы существуем и кормим студентов только лучшей едой!
@@ -1369,25 +1202,58 @@ components:
           example: 1
         login:
           type: string
-          example: pupkin_v_v_1
+          example: putin
         surname:
           type: string
-          example: Пупкин
+          example: Путин
         name:
           type: string
-          example: Василий
+          example: Павел
         patronymic:
           type: string
-          example: Васильевич
+          example: Александрович
         comment:
           type: string
-          example: Отличный официант
         changedPassword:
           type: boolean
           example: false
         restaurantId:
           type: integer
           example: 1
+
+    EmployeeResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        login:
+          type: string
+          example: "putin"
+        surname:
+          type: string
+          example: "Путин"
+        name:
+          type: string
+          example: "Павел"
+        password:
+          type: string
+          example: null
+        role:
+          type: string
+          example: null
+        patronymic:
+          type: string
+          example: null
+        comment:
+          type: string
+          example: null
+        changedPassword:
+          type: string
+          example:  false
+        restaurantId:
+          type: integer
+          example:  1
 
     Table:
       type: object
