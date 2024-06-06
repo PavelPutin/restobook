@@ -1065,6 +1065,18 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/EmployeeResponse"
+        401:
+          description: Клиент не аутентифицирован
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        500:
+          description: Ошибка сервера
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
 
   /restobook-api/auth/password:
     put:
@@ -1106,11 +1118,15 @@ components:
       type: oauth2
       flows:
         password:
+          scopes:
+            all: "Все возможные действия"
           tokenUrl: https://restobook.fun/realms/master/protocol/openid-connect/token
     restobook-employee:
       type: oauth2
       flows:
         password:
+          scopes:
+            all: "Все возможные действия"
           tokenUrl: https://restobook.fun/realms/restaurant/protocol/openid-connect/token
   schemas:
     Restaurant:
