@@ -20,10 +20,11 @@ tags:
     description: действия с аутентификацией
 
 security:
-  - restobook-security: []
+  - vendor-admin: []
+  - restobook-employee: []
 
 paths:
-  /restaurant:
+  /restobook-api/restaurant:
     post:
       operationId: createRestaurant
       tags:
@@ -128,7 +129,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
-  /restaurant/{restaurantId}:
+  /restobook-api/restaurant/{restaurantId}:
     get:
       operationId: getRestaurant
       tags:
@@ -259,7 +260,7 @@ paths:
           description: Ошибка сервера 
     
 
-  /restaurant/{restaurantId}/employee:
+  /restobook-api/restaurant/{restaurantId}/employee:
     post:
       operationId: createEmployee
       tags:
@@ -377,7 +378,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
-  /restaurant/{restaurantId}/employee/{employeeId}:
+  /restobook-api/restaurant/{restaurantId}/employee/{employeeId}:
     get:
       operationId: getEmployee
       tags:
@@ -522,7 +523,7 @@ paths:
           description: Ошибка сервера
 
 
-  /restaurant/{restaurantId}/table:
+  /restobook-api/restaurant/{restaurantId}/table:
     post:
       operationId: createTable
       tags:
@@ -628,7 +629,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
-  /restaurant/{restaurantId}/table/{tableId}:
+  /restobook-api/restaurant/{restaurantId}/table/{tableId}:
     get:
       operationId: getTable
       tags:
@@ -783,7 +784,7 @@ paths:
                 $ref: "#/components/schemas/Error"
 
 
-  /restaurant/{restaurantId}/reservation:
+  /restobook-api/restaurant/{restaurantId}/reservation:
     post:
       operationId: createReservation
       tags:
@@ -899,7 +900,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
-  /restaurant/{restaurantId}/reservation/{reservationId}:
+  /restobook-api/restaurant/{restaurantId}/reservation/{reservationId}:
     get:
       operationId: getReservation
       tags:
@@ -1051,105 +1052,40 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
-
-  /auth/login:
-    post:
-      operationId: loginEmployee
-      summary: Войти в мобильное приложение
+  /restobook-api/auth/me:
+    get:
+      operationId: getMe
+      summary: Получить информацию об аутентифицированном пользователе
       tags:
-      - auth
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                login:
-                  type: string
-                  example: pupkin_v_v_1
-                password:
-                  type: string
-                  example: qwerty
+        - auth
       responses:
         200:
-          description: успешный вход в мобильное приложение
-        401:
-          description: не удалось войти в мобильное приложение, потому что логин или пароль неправильные
+          description: Информация об аутентифицированном пользователе
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
-        500:
-          description: Ошибка на сервере
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-        
-  /auth/admin/login:
-    post:
-      operationId: loginVendorAdmin
-      summary: войти в систему как администратор вендора
-      tags:
-      - auth
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                login:
-                  type: string
-                  example: admin
-                password:
-                  type: string
-                  example: d0ntTryT04ccess
-      responses:
-        200:
-          description: успешный вход
-        401:
-          description: не удалось войти, потому что логин или пароль неправильные
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-        500:
-          description: Ошибка на сервере
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/EmployeeResponse"
 
-  /auth/{restaurantId}/{employeeId}/changepass:
+  /restobook-api/auth/password:
     put:
       operationId: changePassword
       tags:
         - auth
       summary: Изменить пароль сотрудника
-      parameters:
-        - name: restaurantId
-          in: path
-          description: Идентификатор ресторана
-          required: true
-          schema:
-            type: integer
-        - name: employeeId
-          in: path
-          description: Идентификатор сотрудника
-          required: true
-          schema:
-            type: integer
       requestBody:
         content:
           application/json:
             schema:
               type: object
               properties:
-                newpassword:
+                oldPassword:
+                  type: string
+                  example: qwerty
+                newPassword:
                   type: string
                   example: str0ngP4ssw0rd
       responses:
-        200:
+        204:
           description: пароль успешно изменён
         401:
           description: не удалось сменить пароль
@@ -1166,14 +1102,16 @@ paths:
 
 components:
   securitySchemes:
-    restobook-security:
+    vendor-admin:
       type: oauth2
       flows:
         password:
-          scopes:
-            write:all: "Изменять данные о ресторане" 
-            read:all: "Получать данные о ресторане"
-          tokenUrl: https://http://2778989-ta65313.twc1.net/auth/login
+          tokenUrl: https://restobook.fun/realms/master/protocol/openid-connect/token
+    restobook-employee:
+      type: oauth2
+      flows:
+        password:
+          tokenUrl: https://restobook.fun/realms/restaurant/protocol/openid-connect/token
   schemas:
     Restaurant:
       type: object
