@@ -30,6 +30,7 @@
 - [Документация к API](https://restobook.fun/docs/Restobook-openapi.html)
 - Видеообзор серверной части приложения [(YouTube)](https://youtu.be/8Y_8HttmjPs)
 - Видеообзор архитектуры клиентской части [(YouTube)](https://youtu.be/qY_WsG7f0NY)
+- Видеообзор серверной инфраструктуры [(YouTube)](https://youtu.be/hb2ULS_wiKE)
 
 
 ### Приложение (!Прототип!)
