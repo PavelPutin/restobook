@@ -32,7 +32,6 @@
 - Видеообзор архитектуры клиентской части [(YouTube)](https://youtu.be/qY_WsG7f0NY)
 - Видеообзор серверной инфраструктуры [(YouTube)](https://youtu.be/hb2ULS_wiKE)
 
-
 ### Приложение
 Мобильное приложение: [Restobook.apk](https://github.com/PavelPutin/restobook_mobile_client/releases/download/v1.1.3/app-release.apk)
 
@@ -48,6 +47,10 @@
 Логин: kc_admin
 
 Пароль: kc_pass
+
+### Аналитика приложения
+- Аналитическая платформа [AppMetrica](https://appmetrica.yandex.ru/overview?appId=4559338&period=quarter&group=day&currency=rub&accuracy=medium)
+- [Обзорный отчёт](https://github.com/PavelPutin/restobook/blob/master/documentation/аналитика%20приложения/обзорный%20аналитический%20отчёт.png)
 
 ### Отчёт о проделанной работе (2 аттестация)
 Отчёт [(Pptx)](https://github.com/PavelPutin/restobook/blob/master/%D0%BE%D1%82%D1%87%D1%91%D1%82%D1%8B%20%D0%BE%20%D0%BF%D1%80%D0%BE%D0%B4%D0%B5%D0%BB%D0%B0%D0%BD%D0%BD%D0%BE%D0%B9%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B5/%D0%9E%D1%82%D1%87%D1%91%D1%82%20%D0%BE%20%D0%BF%D1%80%D0%BE%D0%B4%D0%B5%D0%BB%D0%B0%D0%BD%D0%BD%D0%BE%D0%B9%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B5.pptx) [(PDF)](https://github.com/PavelPutin/restobook/blob/master/%D0%BE%D1%82%D1%87%D1%91%D1%82%D1%8B%20%D0%BE%20%D0%BF%D1%80%D0%BE%D0%B4%D0%B5%D0%BB%D0%B0%D0%BD%D0%BD%D0%BE%D0%B9%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B5/%D0%9E%D1%82%D1%87%D1%91%D1%82%20%D0%BE%20%D0%BF%D1%80%D0%BE%D0%B4%D0%B5%D0%BB%D0%B0%D0%BD%D0%BD%D0%BE%D0%B9%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B5.pdf)
