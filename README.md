@@ -20,7 +20,7 @@
 - Презентация ТЗ [(Pptx)](https://github.com/PavelPutin/restobook/blob/master/presentation%20(technical%20specification)/Restobook.pptx) [(PDF)](https://github.com/PavelPutin/restobook/blob/master/presentation%20(technical%20specification)/Restobook.pdf)
 - Видеопрезентация ТЗ [YouTube](https://www.youtube.com/watch?v=wSFgZj5X8ig)
 - Презентация продукта [(Pptx)](https://github.com/PavelPutin/restobook/blob/master/presentation%20(product)/Restobook.pptx) [(PDF)](https://github.com/PavelPutin/restobook/blob/master/presentation%20(product)/Restobook.pdf)
-- Видеопрезентация продукта [YouTube](https://youtu.be/JaApGt-8Cmk)
+- Видеопрезентация продукта [YouTube](https://youtu.be/3GYzrXDHm2o)
 - Демонстрация продукта [YouTube](https://www.youtube.com/watch?v=YE4Sysjlr6o)
 
 ### Документация
