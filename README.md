@@ -33,7 +33,7 @@
 - Видеообзор серверной инфраструктуры [(YouTube)](https://youtu.be/hb2ULS_wiKE)
 
 ### Приложение
-Мобильное приложение: [Restobook.apk](https://github.com/PavelPutin/restobook_mobile_client/releases/download/v1.1.6/app-release.apk)
+Мобильное приложение: [Restobook.apk](https://github.com/PavelPutin/restobook_mobile_client/releases/download/v1.1.7/app-release.apk)
 
 [Сайт администратора вендора](https://restobook.fun/web/)
 
