@@ -304,7 +304,7 @@ paths:
                   type: string
                   example: restobook_admin
       responses:
-        200:
+        201:
           description: Сотрудник создан
           content:
             application/json:
