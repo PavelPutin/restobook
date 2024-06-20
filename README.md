@@ -31,6 +31,7 @@
 - Видеообзор серверной части приложения [(YouTube)](https://youtu.be/8Y_8HttmjPs)
 - Видеообзор архитектуры клиентской части [(YouTube)](https://youtu.be/qY_WsG7f0NY)
 - Видеообзор серверной инфраструктуры [(YouTube)](https://youtu.be/hb2ULS_wiKE)
+- Краткая инструкция по развёртыванию [(Docx)](https://github.com/PavelPutin/restobook/blob/master/documentation/инструкция%20по%20развёртыванию/инструкция%20по%20развёртыванию.docx) [(PDF)](https://github.com/PavelPutin/restobook/blob/master/documentation/инструкция%20по%20развёртыванию/инструкция%20по%20развёртыванию.pdf)
 
 ### Приложение
 Мобильное приложение: [Restobook.apk](https://github.com/PavelPutin/restobook_mobile_client/releases/latest/download/app-release.apk)
