@@ -44,9 +44,9 @@
 | Сотрудник     | frolov       | qwerty |
 
 ### Тестовые данные для входа на сайт администратора вендора
-Логин: kc_admin
-
-Пароль: kc_pass
+|                       | Логин        | Пароль  |
+|-----------------------|--------------|---------|
+| Администратор вендора | kc_admiт     | kc_pass |
 
 ### Аналитика приложения
 - Аналитическая платформа [AppMetrica](https://appmetrica.yandex.ru/overview?appId=4559338&period=quarter&group=day&currency=rub&accuracy=medium) (Доступ только по аккаунту Яндекса)
