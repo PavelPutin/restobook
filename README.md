@@ -49,7 +49,7 @@
 Пароль: kc_pass
 
 ### Аналитика приложения
-- Аналитическая платформа [AppMetrica](https://appmetrica.yandex.ru/overview?appId=4559338&period=quarter&group=day&currency=rub&accuracy=medium)
+- Аналитическая платформа [AppMetrica](https://appmetrica.yandex.ru/overview?appId=4559338&period=quarter&group=day&currency=rub&accuracy=medium) (Доступ только по аккаунту Яндекса)
 - [Обзорный отчёт](https://github.com/PavelPutin/restobook/blob/master/documentation/аналитика%20приложения/обзорный%20аналитический%20отчёт.jpg)
 
 ### Отчёт о проделанной работе (2 аттестация)
