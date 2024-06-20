@@ -555,7 +555,7 @@ paths:
                   type: integer
                   example: 1
       responses:
-        200:
+        201:
           description: Стол создан
           content:
             application/json:
