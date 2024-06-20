@@ -33,7 +33,7 @@
 - Видеообзор серверной инфраструктуры [(YouTube)](https://youtu.be/hb2ULS_wiKE)
 
 ### Приложение
-Мобильное приложение: [Restobook.apk](https://github.com/PavelPutin/restobook_mobile_client/releases/download/v1.1.8/app-release.apk)
+Мобильное приложение: [Restobook.apk](https://github.com/PavelPutin/restobook_mobile_client/releases/latest/download/app-release.apk)
 
 [Сайт администратора вендора](https://restobook.fun/web/)
 
@@ -44,9 +44,9 @@
 | Сотрудник     | frolov       | qwerty |
 
 ### Тестовые данные для входа на сайт администратора вендора
-Логин: kc_admin
-
-Пароль: kc_pass
+|                       | Логин        | Пароль  |
+|-----------------------|--------------|---------|
+| Администратор вендора | kc_admin     | kc_pass |
 
 ### Аналитика приложения
 - Аналитическая платформа [AppMetrica](https://appmetrica.yandex.ru/overview?appId=4559338&period=quarter&group=day&currency=rub&accuracy=medium) (Доступ только по аккаунту Яндекса)
